@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import {JsonPipe} from '@angular/common'
 import { FormsModule } from '@angular/forms'; 
 import { NoticiasService } from './services/noticias';
 import { Noticia } from './models/noticia';
@@ -6,7 +7,7 @@ import { Noticia } from './models/noticia';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [FormsModule], // Aquí se inyecta el módulo de formularios
+  imports: [FormsModule,JsonPipe], // Aquí se inyecta el módulo de formularios y también de jsonpipe
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
@@ -16,6 +17,8 @@ export class App {
 
   // error "Property 'noticias' does not exist"
   noticias: Noticia[] = [];
+
+
 
   // error "Property 'nuevaNoticia' does not exist"
   nuevaNoticia = {
@@ -49,4 +52,5 @@ export class App {
     this.noticiasService.eliminarNoticia(id);
     this.actualizarLista();
   }
+
 }
